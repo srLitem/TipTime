@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -30,6 +36,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cost_of_service_edit_text"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -46,7 +53,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/service_question"
         android:layout_height="wrap_content"></ImageView>
 
-    <TextView
+    <TextViev
         android:id="@+id/service_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,7 +61,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toEndOf="@id/icon_service_question"
-        app:layout_constraintTop_toBottomOf="@id/cost_of_service" />
+        app:layout_constraintTop_toBottomOf="@id/cost_of_service"
+        style="@style/Widget.TipTime.TextView"
+        />
 
     <RadioGroup
         android:id="@+id/tip_options"
@@ -105,7 +114,8 @@
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toEndOf="@id/icon_round_up"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tip_options" />
+        app:layout_constraintTop_toBottomOf="@id/tip_options"
+        style="@style/Widget.TipTime.CompoundButton.Switch"/>
 
     <Button
         android:id="@+id/calculate_button"
@@ -126,8 +136,10 @@
         tools:text="Tip Amount $10"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calculate_button">
+        app:layout_constraintTop_toBottomOf="@id/calculate_button"
+        style="@style/Widget.TipTime.TextView">
 
     </TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
