@@ -15,9 +15,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Inflate the layout
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        // Listen to the tap action of the user on the button to calculate
         binding.calculateButton.setOnClickListener {
             calculateTip()
         }
@@ -25,17 +26,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculateTip() {
         val stringInTextField = binding.costOfServiceEditText.text.toString()
+        // Get the cost value typed by the user
         val cost = stringInTextField.toDoubleOrNull()
+        // If the cost is empty then do not show anything.
         if (cost == null){
             binding.tipResult.text = ""
             return
         }
+        // Assign the amount of the tip according to the selected option
         val tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
             R.id.option_twenty_percent -> .20
             R.id.option_eighteenth_percent -> .18
             else -> .15
         }
+        // Calculate the tip
         var tip = tipPercentage * cost
+        // If the rounding up switch is checked, round the calculated tip
         if (binding.roundUpSwitch.isChecked) {
             tip = kotlin.math.ceil(tip)
         }
@@ -43,7 +49,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayTip(tip: Double){
+        // Format the tip in the currency according to the locale
         val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
+        // Show the formatted tip on the screen
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
     }
 
